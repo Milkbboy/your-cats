@@ -24,9 +24,9 @@ type PatHandStyle = CSSProperties & {
 };
 
 const handImageByKind: Record<PatKind, string> = {
-  belly: '/assets/hands/hand_belly.png',
-  head: '/assets/hands/hand_head.png',
-  side: '/assets/hands/hand_side.png',
+  belly: `${import.meta.env.BASE_URL}assets/hands/hand_belly.png`,
+  head: `${import.meta.env.BASE_URL}assets/hands/hand_head.png`,
+  side: `${import.meta.env.BASE_URL}assets/hands/hand_side.png`,
 };
 
 function HomePage({
