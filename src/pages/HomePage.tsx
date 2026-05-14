@@ -57,8 +57,11 @@ function HomePage({
     }
 
     setIsPatting(true);
-    setPatReaction(canMeetFriend ? '왔어.' : getRandomPatReaction(cat.id));
-    setPatSpot(getRandomPatSpot(cat.id));
+    const nextPatSpot = getRandomPatSpot(cat.id);
+    setPatReaction(
+      canMeetFriend ? '왔어.' : getRandomPatReaction(cat.id, new Date(), nextPatSpot.kind),
+    );
+    setPatSpot(nextPatSpot);
     shouldMeetFriendRef.current = canMeetFriend;
     patTimerRef.current = window.setTimeout(() => {
       if (shouldMeetFriendRef.current) {
@@ -82,7 +85,7 @@ function HomePage({
             alt={`${arrivalCats.oldCat.name} 그림`}
           />
           <img
-            className="arrival-cat-image"
+            className="arrival-cat-image new-cat"
             src={arrivalCats.newCat.image}
             alt={`${arrivalCats.newCat.name} 그림`}
           />
