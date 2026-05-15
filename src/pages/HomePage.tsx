@@ -9,6 +9,8 @@ type HomePageProps = {
   canMeetFriend: boolean;
   onMeetFriend: () => Cat;
   onOpenCollection: () => void;
+  onPlayNewFriendSound: () => void;
+  onPlayPatSound: () => void;
   remainingText: string;
 };
 
@@ -34,6 +36,8 @@ function HomePage({
   canMeetFriend,
   onMeetFriend,
   onOpenCollection,
+  onPlayNewFriendSound,
+  onPlayPatSound,
   remainingText,
 }: HomePageProps) {
   const [isPatting, setIsPatting] = useState(false);
@@ -57,6 +61,7 @@ function HomePage({
     }
 
     setIsPatting(true);
+    onPlayPatSound();
     const nextPatSpot = getRandomPatSpot(cat.id);
     setPatReaction(
       canMeetFriend ? '왔어.' : getRandomPatReaction(cat.id, new Date(), nextPatSpot.kind),
@@ -67,6 +72,7 @@ function HomePage({
       if (shouldMeetFriendRef.current) {
         const newCat = onMeetFriend();
         setArrivalCats({ oldCat: cat, newCat });
+        onPlayNewFriendSound();
         shouldMeetFriendRef.current = false;
       }
       setIsPatting(false);
