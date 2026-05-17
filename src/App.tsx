@@ -44,8 +44,10 @@ function App() {
         {activeTab === 'settings' && (
           <SettingsPage
             onReadyFriend={catApp.readyFriend}
+            onSoundVolumeChange={catSounds.setSoundVolume}
             onToggleSound={catSounds.toggleSoundEnabled}
             soundEnabled={catSounds.soundEnabled}
+            soundVolume={catSounds.soundVolume}
           />
         )}
       </section>
